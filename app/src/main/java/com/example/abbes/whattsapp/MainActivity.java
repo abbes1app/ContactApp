@@ -1,8 +1,10 @@
 package com.example.abbes.whattsapp;
 
 
+import android.Manifest;
 import android.app.FragmentManager;
 import android.content.pm.PackageManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -62,20 +64,29 @@ button2.setOnClickListener(new View.OnClickListener() {
         button.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 boolean installed = appInstalledOrNot("com.whatsapp");
-                 if(installed) {
-                     BlankFragment myfragment = new BlankFragment();
-
-                     FragmentManager fragmentManager = getFragmentManager();
-                     android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-                     transaction.replace(R.id.frly,myfragment);
-                     transaction.addToBackStack(null);
-                     transaction.commit();
-                 } else {
-                     Toast.makeText(MainActivity.this, "app n'est pas installé", Toast.LENGTH_SHORT).show();
+                 if (ContextCompat.checkSelfPermission(MainActivity.this,
+                         Manifest.permission.READ_CONTACTS)
+                         != PackageManager.PERMISSION_GRANTED) {
+                     requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 1);
                  }
-               
 
+
+               else{
+                     boolean installed = appInstalledOrNot("com.whatsapp");
+                     if (installed) {
+                         BlankFragment myfragment = new BlankFragment();
+
+                         FragmentManager fragmentManager = getFragmentManager();
+                         android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+                         transaction.replace(R.id.frly, myfragment);
+                         transaction.addToBackStack(null);
+                         transaction.commit();
+                     } else {
+                         Toast.makeText(MainActivity.this, "app n'est pas installé", Toast.LENGTH_SHORT).show();
+                     }
+
+
+                 }
              }
          });
 
