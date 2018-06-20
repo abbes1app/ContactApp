@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#1c226a"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<RelativeLayout
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/frly">
+
+
+</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/en_tete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:padding="10dp"
+            android:text="Liste des Contacts"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            android:textStyle="italic"
+            android:layout_marginBottom="30dp"/>
+
+
+
+        <ImageButton
+            android:id="@+id/whatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/abbes"
+            android:layout_marginBottom="10dp"
+         />
+        <ImageButton
+            android:id="@+id/viber"
+            android:background="@drawable/viber1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:text="Viber"
+            />
+
+            android:text="Viber"
+        <ImageButton
+            android:background="@drawable/img"
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Conctat"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
