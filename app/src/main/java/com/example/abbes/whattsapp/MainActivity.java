@@ -30,36 +30,48 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onClick(View view) {
 
-
-        boolean installed = appInstalledOrNot("com.viber.voip");
-        if(installed) {
-
-            BlankFragment2 myfragment = new BlankFragment2();
-
-            FragmentManager fragmentManager = getFragmentManager();
-            android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.frly,myfragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 1);
         } else {
-            Toast.makeText(MainActivity.this, "viber n'est pas installé", Toast.LENGTH_SHORT).show();
+            boolean installed = appInstalledOrNot("com.viber.voip");
+            if (installed) {
+
+                BlankFragment2 myfragment = new BlankFragment2();
+
+                FragmentManager fragmentManager = getFragmentManager();
+                android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frly, myfragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            } else {
+                Toast.makeText(MainActivity.this, "viber n'est pas installé", Toast.LENGTH_SHORT).show();
+            }
+
+
         }
-
-
     }
-
 });
 
 button2.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        BlankFragment3 myfragment = new BlankFragment3();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frly,myfragment);
-        transaction.addToBackStack(null);
-        transaction.commit();    }
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 1);
+        } else {
+            BlankFragment3 myfragment = new BlankFragment3();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frly, myfragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+    }
 });
         button.setOnClickListener(new View.OnClickListener() {
              @Override
